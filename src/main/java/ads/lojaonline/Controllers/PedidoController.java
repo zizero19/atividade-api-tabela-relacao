@@ -23,30 +23,24 @@ public class PedidoController {
     @PostMapping("/cadastro")
     public String cadastroPedido(Pedido pedido) {
         pRepository.save(pedido);
-
         return "";
     }
 
     @GetMapping("/lista")
     public List<Pedido> listaPedidos() {
-        List<Pedido> pedidos = new ArrayList<>();
-        pedidos = pRepository.findAll();
-
+        List<Pedido> pedidos = pRepository.findAll();
         return pedidos;
     }
 
     @GetMapping("/busca/{id}")
     public Pedido buscaPedido(@PathVariable("id") int id) {
-        Pedido pedido = new Pedido();
-        pedido = pRepository.findById(id).get();
+        Pedido pedido = pRepository.findById(id).get();
         return pedido;
     }
 
     @GetMapping("/excluir/{id}")
-    public Pedido deletaPedido(@PathVariable("id") int id) {
-        Pedido pedido = new Pedido();
-        pedido = pRepository.findById(id).get();
-        pRepository.delete(pedido);
-        return pedido;
+    public String deletaPedido(@PathVariable("id") int id) {
+        pRepository.deleteById(id);
+        return "";
     }
 }

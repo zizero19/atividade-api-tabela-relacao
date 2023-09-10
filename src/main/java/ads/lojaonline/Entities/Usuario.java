@@ -2,8 +2,6 @@ package ads.lojaonline.Entities;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +19,6 @@ public class Usuario {
     private String email;
     private String cpf;
 
-    // @JsonIgnore
     @OneToMany(mappedBy = "usuario")
     List<Pedido> pedidos;
 

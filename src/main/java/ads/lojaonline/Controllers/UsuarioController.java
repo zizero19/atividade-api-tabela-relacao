@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import ads.lojaonline.Entities.Pedido;
 import ads.lojaonline.Entities.Usuario;
 import ads.lojaonline.Repository.UsuarioRepository;
 

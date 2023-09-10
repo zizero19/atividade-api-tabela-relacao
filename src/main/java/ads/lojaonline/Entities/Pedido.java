@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Pedido {
@@ -23,14 +24,30 @@ public class Pedido {
     @ManyToOne(cascade = CascadeType.REFRESH)
     Usuario usuario;
 
+    @OneToOne(cascade = CascadeType.REFRESH)
+    Endereco endereco;
+
+    @OneToOne(cascade = CascadeType.REFRESH)
+    Pagamento pagamento;
+
     public Pedido() {
 
     }
 
-    public Pedido(int id, Date data, Usuario usuario) {
+    public Pedido(int id, Date data, Usuario usuario, Endereco endereco, Pagamento pagamento) {
         this.id = id;
         this.data = data;
         this.usuario = usuario;
+        this.endereco = endereco;
+        this.pagamento = pagamento;
+    }
+
+    public Pagamento getPagamento() {
+        return pagamento;
+    }
+
+    public void setPagamento(Pagamento pagamento) {
+        this.pagamento = pagamento;
     }
 
     public int getId() {
@@ -55,6 +72,14 @@ public class Pedido {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
 }
